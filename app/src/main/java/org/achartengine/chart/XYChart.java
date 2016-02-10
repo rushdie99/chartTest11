@@ -810,10 +810,11 @@ public abstract class XYChart extends AbstractChart {
 //        drawText(canvas, getLabel(mRenderer.getXLabelFormat(), label), xLabel,
 //            bottom + mRenderer.getLabelsTextSize() * 4 / 3 + mRenderer.getXLabelsPadding(), paint,
 //            mRenderer.getXLabelsAngle());
-
-        drawText(canvas, getLabel(mRenderer.getXLabelFormat(), label), xLabel+80,
-                bottom + mRenderer.getLabelsTextSize() * 1/ 3 + mRenderer.getXLabelsPadding(), paint,
+        paint.setTextSize(mRenderer.getLabelsTextSize()*2);
+        drawText(canvas, getLabel(mRenderer.getXLabelFormat(), label), xLabel + (float) (xPixelsPerUnit * (xLabels.get(1) - xLabels.get(0)) / 2),
+                bottom + mRenderer.getLabelsTextSize() * 1 / 4 + mRenderer.getXLabelsPadding(), paint,
                 mRenderer.getXLabelsAngle());
+        //paint.setTextSize(mRenderer.getLabelsTextSize());
       }
       if (showGridY) {
         mGridPaint.setColor(mRenderer.getGridColor(0));

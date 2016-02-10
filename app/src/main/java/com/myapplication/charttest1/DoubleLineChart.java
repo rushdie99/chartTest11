@@ -164,12 +164,13 @@ public class DoubleLineChart {
 
         multiRenderer.setXLabelsPadding(0f);
         multiRenderer.setChartTitleTextSize(30);
-        multiRenderer.setLabelsTextSize(25);
+        multiRenderer.setLabelsTextSize(20);
         multiRenderer.setLegendTextSize(25);
         multiRenderer.setPointSize(5f);
         multiRenderer.setXTitle("X");
         multiRenderer.setYTitle("Y");
-        multiRenderer.setXLabels(7);
+
+        multiRenderer.setXLabels(10);
         multiRenderer.setXLabelsPadding(20);
         multiRenderer.setYLabels(6);
         multiRenderer.setShowGridY(true);
@@ -203,7 +204,7 @@ public class DoubleLineChart {
 
         multiRenderer.setLabelsTextSize(20);
         //RoundCharth
-        final SimpleDateFormat mDateFormatter = new SimpleDateFormat("HH.mm");
+        final SimpleDateFormat mDateFormatter = new SimpleDateFormat("hh.mm");
         multiRenderer.setXLabelFormat(new NumberFormat() {
             @Override
             public StringBuffer format(double value, StringBuffer buffer, FieldPosition field) {

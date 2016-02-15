@@ -204,7 +204,7 @@ public class DoubleLineChart {
 
         multiRenderer.setLabelsTextSize(20);
         //RoundCharth
-        final SimpleDateFormat mDateFormatter = new SimpleDateFormat("hh.mm");
+        final SimpleDateFormat mDateFormatter = new SimpleDateFormat("MM.DD");
         multiRenderer.setXLabelFormat(new NumberFormat() {
             @Override
             public StringBuffer format(double value, StringBuffer buffer, FieldPosition field) {

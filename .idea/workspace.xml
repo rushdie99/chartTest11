@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bc3ad12-be96-4066-83f3-754965da4f4d" name="Default" comment="" />
@@ -55,10 +55,11 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43110237">
-              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.33661416">
+              <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
               <folding>
-                <element signature="e#724#753#0" expanded="true" />
+                <element signature="e#911#944#0" expanded="true" />
+                <element signature="e#1020#1049#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,12 +134,11 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myapplication/charttest1/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Wechat#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#2148#2671#0" expanded="true" />
-                <element signature="e#2670#2671#0" expanded="true" />
+                <element signature="e#1045#1169#0" expanded="true" />
+                <element signature="e#1168#1169#0" expanded="true" />
                 <element signature="method#chart#0;class#MainActivity#0" expanded="false" />
               </folding>
             </state>
@@ -1975,6 +1975,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="charttest1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chartTest11" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chartTest11" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="androidTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2381,7 +2411,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
           <folding>
-            <element signature="e#724#753#0" expanded="true" />
+            <element signature="e#911#944#0" expanded="true" />
+            <element signature="e#1020#1049#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2449,9 +2480,8 @@
           <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Wechat#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#2148#2671#0" expanded="true" />
-            <element signature="e#2670#2671#0" expanded="true" />
+            <element signature="e#1045#1169#0" expanded="true" />
+            <element signature="e#1168#1169#0" expanded="true" />
             <element signature="method#chart#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
@@ -2505,7 +2535,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="107" column="56" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="56" />
           <folding>
-            <element signature="e#724#753#0" expanded="true" />
+            <element signature="e#911#944#0" expanded="true" />
+            <element signature="e#1020#1049#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2556,9 +2587,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Wechat#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#2148#2671#0" expanded="true" />
-            <element signature="e#2670#2671#0" expanded="true" />
+            <element signature="e#1045#1169#0" expanded="true" />
+            <element signature="e#1168#1169#0" expanded="true" />
             <element signature="method#chart#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
@@ -2750,26 +2780,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myapplication/charttest1/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Wechat#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#2148#2671#0" expanded="true" />
-            <element signature="e#2670#2671#0" expanded="true" />
-            <element signature="method#chart#0;class#MainActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myapplication/charttest1/NutritionCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myapplication/charttest1/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1045#1169#0" expanded="true" />
+            <element signature="e#1168#1169#0" expanded="true" />
+            <element signature="method#chart#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2790,10 +2819,11 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43110237">
-          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.33661416">
+          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
           <folding>
-            <element signature="e#724#753#0" expanded="true" />
+            <element signature="e#911#944#0" expanded="true" />
+            <element signature="e#1020#1049#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -23,16 +23,31 @@ public class MainActivity extends AppCompatActivity {
     ImageButton mWeChatFriendCircle;
     ImageButton mWeChatFriend;
 
+    ImageButton mNutriShare;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nutrition_report_initial);
 
+        this.mNutriShare = (ImageButton)findViewById(R.id.NutriShare);
+        mNutriShare.setOnClickListener(WeixiShare);
+
+
+
         NutriCardBulid();
 
-        //Wechat();
+
         //chart();
     }
+
+    private View.OnClickListener WeixiShare =new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Wechat();
+        }
+    };
+
+
     private void NutriCardBulid()
     {
         DisplayMetrics metrics = new DisplayMetrics();

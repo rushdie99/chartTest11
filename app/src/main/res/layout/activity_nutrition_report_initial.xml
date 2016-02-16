@@ -8,31 +8,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#DCDCDC"
+        >
 
-<TableLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+       <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+           android:orientation="horizontal">
 
-   <TableRow>
+               <TextView
+                   android:id="@+id/LastTimeUpdate"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/activity_vertical_margin"
+                   android:textSize="12sp"
+                   android:text="@string/NutriReportLastTime"/>
 
-       <TextView
-           android:id="@+id/LastTimeUpdate"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="@string/NutriReportLastTime"
-           />
-       <ImageButton
-           android:id="@+id/NutriShare"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="right"
-           android:src="@mipmap/ic_launcher"
-           />
-   </TableRow>
-
-
-</TableLayout>
+               <ImageButton
+                   android:id="@+id/NutriShare"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/ic_launcher"
+                   android:background="#DCDCDC"
+                   />
+        </LinearLayout>
 
 
 

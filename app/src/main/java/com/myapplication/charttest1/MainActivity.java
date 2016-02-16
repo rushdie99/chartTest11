@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nutrition_report_initial);
 
-
-
         NutriCardBulid();
 
         //Wechat();
@@ -45,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         NutritionCard card2= new NutritionCard(this,(View)findViewById(R.id.card2),metrics.widthPixels/3);
         card2.setTitleText("維生素分析");
         card2.setCommText("由於國人一半的主食來自米飯，金惠民建議民眾，少吃白米飯、白土司、精緻澱粉食物，多吃全穀、紫米；並且攝取足量的蔬菜水果類，適量攝取種子堅果，必要時可補充綜合維他命。");
+        NutritionCard card3= new NutritionCard(this,(View)findViewById(R.id.card3),metrics.widthPixels/3);
+        card3.setTitleText("礦物質分析");
+        card3.setCommText("Test");
+        NutritionCard card4= new NutritionCard(this,(View)findViewById(R.id.card4),metrics.widthPixels/3);
+        card4.setTitleText("其他情況");
+        card4.setCommText("Others");
 
     }
 

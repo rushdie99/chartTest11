@@ -26,8 +26,7 @@ public class NutritionCard {
         this.mDetialTitleWidth=detialwidth;
         mNutriSwitch=(ImageButton)mCardView.findViewById(R.id.NutriSwitch);
         mNutriSwitch.setOnClickListener(LayoutCommand);
-        //Switch card context
-        mNutriSwitch.setTag(2);
+
         mNutrilayout = (LinearLayout) mCardView.findViewById(R.id.NutriLayout);
         mNutrilayout.setTag(1);
         mNutriTitle = (TextView)mCardView.findViewById(R.id.NutriTitle);

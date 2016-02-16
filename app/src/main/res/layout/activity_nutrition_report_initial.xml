@@ -10,6 +10,30 @@
         android:layout_margin="0dp"
         android:orientation="vertical">
 
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+   <TableRow>
+
+       <TextView
+           android:id="@+id/LastTimeUpdate"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/NutriReportLastTime"
+           />
+       <ImageButton
+           android:id="@+id/NutriShare"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="right"
+           android:src="@mipmap/ic_launcher"
+           />
+   </TableRow>
+
+
+</TableLayout>
+
 
 
         <include layout="@layout/report_info_card"

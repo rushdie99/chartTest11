@@ -25,4 +25,29 @@
         android:orientation="vertical"
         android:layout_below="@id/text1"
         ></LinearLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/WeChatFriendCircle"
+        android:layout_marginBottom="89dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/WeChatFriend" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/WeChatFriend"
+        android:layout_alignTop="@+id/WeChatFriendCircle"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/text1" />
+
+
 </RelativeLayout>

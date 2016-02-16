@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">chartTest1</string>
+
+    <string name="NutriReportLastTime">智慧營養建議 數據期間: </string>
+    <string name="NutriReportTitle1">營養結構分析</string>
+    <string name="NutriReportTitle2">維生素分析</string>
+    <string name="NutriReportTitle3">礦物質分析</string>
+    <string name="NutriReportTitle4">其他情況</string>
+    <string name="NutriReportComm">智慧建議</string>
 </resources>

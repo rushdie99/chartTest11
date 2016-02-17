@@ -131,8 +131,8 @@ public class MainActivity extends AppCompatActivity {
             int color2 = Color.BLACK;
             Threshold[] threshold = new Threshold[]
                     {
-                            new Threshold(1200, 1000, color1),
-                             new Threshold(900, 500, color2)
+                            new Threshold(1800, 1000, color1),
+                             new Threshold(900, 5, color2)
                     };
 
             Resources res = getResources();
@@ -141,9 +141,6 @@ public class MainActivity extends AppCompatActivity {
 
             //第二個param  是為一週的中心日期  會往前後三天 畫出XLabel
             DoubleLineChart chart = new DoubleLineChart("PChart",Titlebmp,new Date(2012,9,4), "壓力1", "壓力2", dt1, dt2, data1, data2, color1, color2, threshold, MainActivity.this);
-
-
-
 
             LinearLayout lin = (LinearLayout) findViewById(R.id.l1);
 

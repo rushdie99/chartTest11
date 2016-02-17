@@ -221,9 +221,6 @@ public class DoubleLineChart  {
 
         CustomerXLabel(mChoiceDate);
 
-
-
-
         multiRenderer.setLabelsColor(Color.DKGRAY);
         multiRenderer.setChartTitle(this.Title);
 

@@ -294,8 +294,10 @@ public abstract class XYChart extends AbstractChart {
         float max= (float)maxY[0] *(float)yPixelsPerUnit[0];
         int BottomY = Math.round(min);
         int TopY = Math.round(max);
-//        drawThreshold(mRenderer, canvas,Top,Bottom, x,  height - Math.round(statPiexel)-margins[0]-margins[3], width,Math.round(endPixel), paint, true,
-//                ToArgb(th.color));
+
+        if(endPixel<BottomY)
+          endPixel=BottomY;
+
         drawThreshold(mRenderer, canvas , x, (height-bottom -top )+TopY-Math.round(statPiexel)-BottomY, width,Math.round(statPiexel - endPixel), paint, true,
                 ToArgb(th.color));
 

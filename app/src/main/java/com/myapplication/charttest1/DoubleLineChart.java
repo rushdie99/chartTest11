@@ -20,10 +20,11 @@ import java.text.FieldPosition;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by sanndy on 2016/2/5.
+ * Created by polin on 2016/2/5.
  */
 
 
@@ -31,6 +32,7 @@ import java.util.Date;
 
 public class DoubleLineChart {
 
+    private Date mChoiceDate ;
     private  Date[] d1;
     private  Date[] d2;
     private String Title;
@@ -63,7 +65,7 @@ public class DoubleLineChart {
 //    }
 
 
-    public DoubleLineChart(String Title ,String seriesname1,String seriesname2 , Date[] d1 , Date[] d2, int[] data1, int[] data2,int color1,int color2, Threshold [] thrsehold, Context Context) {
+    public DoubleLineChart(String Title,Date choiceDate ,String seriesname1,String seriesname2 , Date[] d1 , Date[] d2, int[] data1, int[] data2,int color1,int color2, Threshold [] thrsehold, Context Context) {
 
        this.Title=Title;
         this.d1=d1;
@@ -74,12 +76,52 @@ public class DoubleLineChart {
         this.context = Context;
         this.series1=seriesname1;
         this.series2=seriesname2;
+        this.mChoiceDate=choiceDate;
         InitSeries(this.d1,this.d2, this.data1, this.data2);
-        InitLineRender(color1,color2);
+        InitLineRender(color1, color2);
         CombinedXYChart.XYCombinedChartDef[] types = new CombinedXYChart.XYCombinedChartDef[]{ new CombinedXYChart.XYCombinedChartDef("Time",0),new CombinedXYChart.XYCombinedChartDef("Time",1)};
 
         // Creating a combined chart with the chart types specified in types array
         this.gv = ChartFactory.getCombinedXYChartView(this.context, this.dataset, this.multiRenderer, types);
+    }
+
+    public void CustomerXLabel(Date date)
+    {
+        multiRenderer.setXLabels(0);
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, -3);
+        Date startdt = c.getTime();
+
+        Calendar c1 = Calendar.getInstance();
+        c1.setTime(date);
+        c1.add(Calendar.DATE, 3);
+        Date enddt = c1.getTime();
+
+
+        Date mDate = new Date(startdt.getYear(),startdt.getMonth(),startdt.getDate(),0,0);
+        long starttimeInMilliseconds = mDate.getTime();
+
+        mDate = new Date(enddt.getYear(),enddt.getMonth(),enddt.getDate(),24,0);
+        long endtimeInMilliseconds = mDate.getTime();
+
+        multiRenderer.setXAxisMin(starttimeInMilliseconds);
+        multiRenderer.setXAxisMax(endtimeInMilliseconds);
+
+        int daydiff= 7;
+        for (int i =0 ;i<daydiff;i++)
+        {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startdt);
+            calendar.add(Calendar.DATE, i);
+            Date claendarDate= calendar.getTime();
+            Date convertToStartDate =new Date (claendarDate.getYear(),claendarDate.getMonth(),claendarDate.getDate(),0,0);
+            long xlabeltimeInMilliseconds = convertToStartDate.getTime();
+             multiRenderer.addXTextLabel(xlabeltimeInMilliseconds, (claendarDate.getMonth()+1)+"."+claendarDate.getDate() );
+
+        }
+        multiRenderer.setShowCustomTextGridX(true);
+
     }
 
     public void InitSeries(Date[] dt1,Date[] dt2 , int[] data1, int[] data2) {
@@ -159,18 +201,27 @@ public class DoubleLineChart {
 
         // Creating a XYMultipleSeriesRenderer to customize the whole chart
         this.multiRenderer= new XYMultipleSeriesRenderer();
+
+        CustomerXLabel(mChoiceDate);
+
+
+
+
         multiRenderer.setLabelsColor(Color.RED);
         multiRenderer.setChartTitle(this.Title);
 
-        multiRenderer.setXLabelsPadding(0f);
+
         multiRenderer.setChartTitleTextSize(30);
         multiRenderer.setLabelsTextSize(20);
         multiRenderer.setLegendTextSize(25);
         multiRenderer.setPointSize(5f);
-        multiRenderer.setXTitle("X");
-        multiRenderer.setYTitle("Y");
+//        multiRenderer.setXTitle("X");
+//        multiRenderer.setYTitle("Y");
 
-        multiRenderer.setXLabels(10);
+//        // disable the default labels
+
+///setXAxisMin(double)
+
         multiRenderer.setXLabelsPadding(20);
         multiRenderer.setYLabels(6);
         multiRenderer.setShowGridY(true);
@@ -186,25 +237,26 @@ public class DoubleLineChart {
         multiRenderer.setYLabelsAlign(Paint.Align.RIGHT, 0);
         multiRenderer.setYLabelsPadding(0);
 
-
+        multiRenderer.setZoomEnabled(false, false);
         multiRenderer.setZoomButtonsVisible(false);
 
-        multiRenderer.setBarSpacing(4);
+        multiRenderer.setBarSpacing(2);
 
 
-        multiRenderer.setPanEnabled(true, false);
+        //滑動
+        multiRenderer.setPanEnabled(false,false);
         multiRenderer.setMarginsColor(Color.argb(0, 255, 0, 0));
 //LEGEND POSITION
-        multiRenderer.setMargins(new int[]{40, 20, 5, 10});
+        multiRenderer.setMargins(new int[]{40, 0, 5, 10});
 
         multiRenderer.setShowLegend(true);
 //Set Thread Hold YValue
 
         multiRenderer.setmThreshold(mthreshold);
 
-        multiRenderer.setLabelsTextSize(20);
+        multiRenderer.setLabelsTextSize(15);
         //RoundCharth
-        final SimpleDateFormat mDateFormatter = new SimpleDateFormat("MM.DD");
+        final SimpleDateFormat mDateFormatter = new SimpleDateFormat("MMM.dd.hh.mm");
         multiRenderer.setXLabelFormat(new NumberFormat() {
             @Override
             public StringBuffer format(double value, StringBuffer buffer, FieldPosition field) {

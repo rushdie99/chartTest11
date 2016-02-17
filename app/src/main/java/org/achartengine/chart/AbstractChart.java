@@ -66,7 +66,7 @@ public abstract class AbstractChart implements Serializable {
    * @param color the color to be used
    */
 
-  protected void drawThreshold(DefaultRenderer renderer, Canvas canvas,int chartheight, int x, int y, int width,
+  protected void drawThreshold(DefaultRenderer renderer, Canvas canvas, int x, int y, int width,
                                 int height, Paint paint, boolean newColor, int color) {
     if (renderer.isApplyBackgroundColor() || newColor) {
       if (newColor) {
@@ -75,16 +75,18 @@ public abstract class AbstractChart implements Serializable {
         paint.setColor(renderer.getBackgroundColor());
       }
       paint.setStyle(Style.FILL);
-      int bottom= chartheight ;
-      int drawbottom = y+height;
-      if(y>bottom)
-        y=bottom;
-      if(drawbottom>bottom)
-        drawbottom=bottom;
+
+      int drawtop = y;
+      int drawbottom = drawtop+height ;
+
+//      if(y>bottom)
+//        y=bottom;
+//      if(drawbottom>bottom)
+//        drawbottom=bottom;
 
 
-      //左 上 右 下。
-      canvas.drawRect(x, y, x + width,  drawbottom, paint);
+      //set top and bottom
+      canvas.drawRect(x, drawtop, x + width, drawbottom , paint);
 
 
 

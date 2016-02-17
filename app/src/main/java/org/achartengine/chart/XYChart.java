@@ -16,7 +16,6 @@
 package org.achartengine.chart;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
@@ -27,6 +26,7 @@ import android.graphics.PathEffect;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.text.format.DateFormat;
 
 import org.achartengine.model.Point;
 import org.achartengine.model.SeriesSelection;
@@ -41,11 +41,14 @@ import org.achartengine.renderer.XYMultipleSeriesRenderer.Orientation;
 import org.achartengine.renderer.XYSeriesRenderer;
 import org.achartengine.util.MathHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.SortedMap;
@@ -287,10 +290,15 @@ public abstract class XYChart extends AbstractChart {
       for (Threshold th: mRenderer.getThreshold()) {
 
         float statPiexel=  th.topYvalue * (float) yPixelsPerUnit[0];
-        float endPixel =  (th.topYvalue-th.buttomYvalue) * (float) yPixelsPerUnit[0] ;
-        float temp= (float)minY[0] *(float)yPixelsPerUnit[0];
-        int minBottom = Math.round( temp);
-        drawThreshold(mRenderer, canvas,height-margins[0]-margins[3] -minBottom, x,  height - Math.round(statPiexel)-margins[0]-margins[3], width,Math.round(endPixel), paint, true,
+        float endPixel =   th.buttomYvalue  * (float) yPixelsPerUnit[0] ;
+
+        float min= (float)minY[0] *(float)yPixelsPerUnit[0];
+        float max= (float)maxY[0] *(float)yPixelsPerUnit[0];
+        int BottomY = Math.round(min);
+        int TopY = Math.round(max);
+//        drawThreshold(mRenderer, canvas,Top,Bottom, x,  height - Math.round(statPiexel)-margins[0]-margins[3], width,Math.round(endPixel), paint, true,
+//                ToArgb(th.color));
+        drawThreshold(mRenderer, canvas , x, (height-bottom -top )+TopY-Math.round(statPiexel)-BottomY, width,Math.round(statPiexel - endPixel), paint, true,
                 ToArgb(th.color));
 
       }
@@ -807,14 +815,14 @@ public abstract class XYChart extends AbstractChart {
           canvas
               .drawLine(xLabel, bottom, xLabel, bottom + mRenderer.getLabelsTextSize() / 3, paint);
         }
-//        drawText(canvas, getLabel(mRenderer.getXLabelFormat(), label), xLabel,
-//            bottom + mRenderer.getLabelsTextSize() * 4 / 3 + mRenderer.getXLabelsPadding(), paint,
-//            mRenderer.getXLabelsAngle());
-        paint.setTextSize(mRenderer.getLabelsTextSize()*2);
+        drawText(canvas, getLabel(mRenderer.getXLabelFormat(), label), xLabel,
+            bottom + mRenderer.getLabelsTextSize() * 4 / 3 + mRenderer.getXLabelsPadding(), paint,
+            mRenderer.getXLabelsAngle());
+        paint.setTextSize(mRenderer.getLabelsTextSize());
 
-        drawText(canvas, getLabel(mRenderer.getXLabelFormat(), label), xLabel + (float) (xPixelsPerUnit * (xLabels.get(1) - xLabels.get(0)) / 2),
-                bottom + mRenderer.getLabelsTextSize() * 1 / 4 + mRenderer.getXLabelsPadding(), paint,
-                mRenderer.getXLabelsAngle());
+//        drawText(canvas, getLabel(mRenderer.getXLabelFormat(), label), xLabel + (float) (xPixelsPerUnit * (xLabels.get(1) - xLabels.get(0)) / 2),
+//                bottom + mRenderer.getLabelsTextSize() * 1 / 4 + mRenderer.getXLabelsPadding(), paint,
+//                mRenderer.getXLabelsAngle());
         //paint.setTextSize(mRenderer.getLabelsTextSize());
       }
       if (showGridY) {
@@ -923,6 +931,7 @@ public abstract class XYChart extends AbstractChart {
       double maxX) {
     boolean showCustomTextGridX = mRenderer.isShowCustomTextGridX();
     boolean showTickMarks = mRenderer.isShowTickMarks();
+
     if (showLabels) {
       paint.setColor(mRenderer.getXLabelsColor());
       for (Double location : xTextLabelLocations) {
@@ -933,9 +942,15 @@ public abstract class XYChart extends AbstractChart {
             canvas.drawLine(xLabel, bottom, xLabel, bottom + mRenderer.getLabelsTextSize() / 3,
                 paint);
           }
-          drawText(canvas, mRenderer.getXTextLabel(location), xLabel,
-              bottom + mRenderer.getLabelsTextSize() * 4 / 3 + mRenderer.getXLabelsPadding(),
-              paint, mRenderer.getXLabelsAngle());
+          paint.setTextSize(mRenderer.getLabelsTextSize()*2);
+//          drawText(canvas, mRenderer.getXTextLabel(location), xLabel,
+//                  bottom + mRenderer.getLabelsTextSize() * 4 / 3 + mRenderer.getXLabelsPadding(),
+//                  paint, mRenderer.getXLabelsAngle());
+          drawText(canvas, mRenderer.getXTextLabel(location),xLabel +mRenderer.getLabelsTextSize()*4 ,
+                  bottom + mRenderer.getLabelsTextSize() * 4 / 3 + mRenderer.getXLabelsPadding(),
+                  paint, mRenderer.getXLabelsAngle());
+
+          //prexLabel=xLabel;
           if (showCustomTextGridX) {
             paint.setColor(mRenderer.getGridColor(0));
             canvas.drawLine(xLabel, bottom, xLabel, top, paint);

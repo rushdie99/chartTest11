@@ -14,7 +14,6 @@ import com.tencent.mm.sdk.openapi.IWXAPI;
 import org.achartengine.renderer.Threshold;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,17 +26,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nutrition_report_initial);
+        setContentView(R.layout.activity_main);
+//
+//        this.mNutriShare = (ImageButton)findViewById(R.id.NutriShare);
+//        mNutriShare.setOnClickListener(WeixiShare);
+//
+//
+//
+//        NutriCardBulid();
 
-        this.mNutriShare = (ImageButton)findViewById(R.id.NutriShare);
-        mNutriShare.setOnClickListener(WeixiShare);
 
-
-
-        NutriCardBulid();
-
-
-        //chart();
+         chart();
     }
 
     private View.OnClickListener WeixiShare =new View.OnClickListener() {
@@ -87,36 +86,55 @@ public class MainActivity extends AppCompatActivity {
         private void chart() {
 
 
+
             int count = 7;
-            Date[] dt1 = new Date[count];
-            for (int i = 0; i < count; i++) {
-                GregorianCalendar gc = new GregorianCalendar(2012, 10, 30, 11, i, 10);
-                dt1[i] = gc.getTime();
-            }
-            Date[] dt2 = new Date[count];
-            GregorianCalendar gc2 = null;
-            for (int i = 0; i < count; i++) {
-                if (i % 2 == 0) {
-                    gc2 = new GregorianCalendar(2012, 10, 30, 11, i);
-                } else {
-                    gc2 = new GregorianCalendar(2012, 10, 30, 11, i + 4);
-                }
-                dt2[i] = gc2.getTime();
+            Date[] dt1 = new Date[count*3];
+            int j=0;
+            int month = 9;
+            for(int i =0 ;i<7 ;i++) {
+
+                Date gc = new Date(2012, month, i+1,7, 0);
+                dt1[j] = gc;
+                j++;
+                gc = new Date(2012, month, i+1, 12, 0);
+                dt1[j] = gc ;
+                j++;
+                gc = new Date(2012, month, i+1, 19, 0);
+                dt1[j] = gc;
+                j++;
             }
 
-            int[] data1 = {2000, 2500, 500, 3000, 2800, 3500, 3700, 3800};
-            int[] data2 = {2200, 2700, 2900, 2800, 2600, 3000, 3300, 3400};
+            Date[] dt2 = new Date[count*2];
 
+            j=0;
+            for(int i =0 ;i<7 ;i++) {
+
+                Date gc = new Date(2012,month, i+1, 7, 0);
+                dt2[j] = gc ;
+                j++;
+                gc = new Date(2012,month, i+1, 12, 0);
+                dt2[j] =  gc;
+                j++;
+
+            }
+            int []data1= new int [21];
+            int[] data2 =new int [14];
+            for(int i =0 ;i<data1.length ;i++)
+            {
+                data1[i] = (int)(Math.random()* 2000 +100);
+
+            }
+            for(int i =0 ;i<data2.length ;i++) {
+                data2[i] = (int) (Math.random() * 2000 + 50);
+            }
             int color1 = Color.BLUE;
-
             int color2 = Color.BLACK;
-
             Threshold[] threshold = new Threshold[]
                     {
-                            new Threshold(2200, 1512, color1),
-                            new Threshold(1000, 50, color2)
+                            new Threshold(1200, 1000, color1),
+                             new Threshold(900, 500, color2)
                     };
-            DoubleLineChart chart = new DoubleLineChart("標題在這", "壓力1", "壓力2", dt1, dt2, data1, data2, color1, color2, threshold, MainActivity.this);
+            DoubleLineChart chart = new DoubleLineChart("PChart",new Date(2012,9,4), "壓力1", "壓力2", dt1, dt2, data1, data2, color1, color2, threshold, MainActivity.this);
 
             LinearLayout lin = (LinearLayout) findViewById(R.id.l1);
 

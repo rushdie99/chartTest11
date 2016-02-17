@@ -15,6 +15,8 @@
  */
 package org.achartengine.chart;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
@@ -26,7 +28,6 @@ import android.graphics.PathEffect;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.text.format.DateFormat;
 
 import org.achartengine.model.Point;
 import org.achartengine.model.SeriesSelection;
@@ -41,14 +42,11 @@ import org.achartengine.renderer.XYMultipleSeriesRenderer.Orientation;
 import org.achartengine.renderer.XYSeriesRenderer;
 import org.achartengine.util.MathHelper;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.SortedMap;
@@ -505,11 +503,11 @@ public abstract class XYChart extends AbstractChart {
         paint.setTextAlign(Align.CENTER);
         if (or == Orientation.HORIZONTAL) {
           drawText(
-              canvas,
-              mRenderer.getXTitle(),
-              x + width / 2,
-              bottom + mRenderer.getLabelsTextSize() * 4 / 3 + mRenderer.getXLabelsPadding() + size,
-              paint, 0);
+                  canvas,
+                  mRenderer.getXTitle(),
+                  x + width / 2,
+                  bottom + mRenderer.getLabelsTextSize() * 4 / 3 + mRenderer.getXLabelsPadding() + size,
+                  paint, 0);
           for (int i = 0; i < maxScaleNumber; i++) {
             Align axisAlign = mRenderer.getYAxisAlign(i);
             if (axisAlign == Align.LEFT) {
@@ -518,12 +516,17 @@ public abstract class XYChart extends AbstractChart {
               drawText(canvas, mRenderer.getYTitle(i), x + width, y + height / 2, paint, -90);
             }
           }
-          //SetTitle
+          //SetTitle Poition
           paint.setTextSize(mRenderer.getChartTitleTextSize());
 //          drawText(canvas, mRenderer.getChartTitle(), x + width / 2,
 //              y + mRenderer.getChartTitleTextSize(), paint, 0);
-          drawText(canvas, mRenderer.getChartTitle(), x +  width/10,
-                  y +   mRenderer.getChartTitleTextSize(), paint, 0);
+
+          if(mRenderer.getChartTitleBmp()!=null) {
+            canvas.drawBitmap(mRenderer.getChartTitleBmp(),0,0,paint);
+          }
+
+          drawText(canvas, mRenderer.getChartTitle(), x + width / 10,
+                  y + mRenderer.getChartTitleTextSize(), paint, 0);
 
 
         } else if (or == Orientation.VERTICAL) {

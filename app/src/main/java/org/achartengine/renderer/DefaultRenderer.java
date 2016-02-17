@@ -19,10 +19,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
-
-
+import android.widget.ImageView;
 
 
 /**
@@ -31,6 +31,7 @@ import android.graphics.Typeface;
 public class DefaultRenderer implements Serializable {
   /** The chart title. */
   private String mChartTitle = "";
+    private Bitmap mChartTitleBmp  ;
   /** The chart title text size. */
   private float mChartTitleTextSize = 15;
   /** A no color constant. */
@@ -137,7 +138,9 @@ public class DefaultRenderer implements Serializable {
   public String getChartTitle() {
     return mChartTitle;
   }
-
+    public Bitmap getChartTitleBmp() {
+        return mChartTitleBmp;
+    }
   /**
    * Sets the chart title.
    * 
@@ -146,6 +149,11 @@ public class DefaultRenderer implements Serializable {
   public void setChartTitle(String title) {
     mChartTitle = title;
   }
+
+    public void setChartTitle(Bitmap titlebmp) {
+        mChartTitleBmp = titlebmp;
+    }
+
 
   /**
    * Returns the chart title text size.

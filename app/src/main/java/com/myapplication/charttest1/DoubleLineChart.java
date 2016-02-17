@@ -1,7 +1,9 @@
 package com.myapplication.charttest1;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.view.View;
 
@@ -30,7 +32,7 @@ import java.util.Date;
 
 
 
-public class DoubleLineChart {
+public class DoubleLineChart  {
 
     private Date mChoiceDate ;
     private  Date[] d1;
@@ -44,6 +46,9 @@ public class DoubleLineChart {
     private Context context;
     private GraphicalView gv;
     private Threshold [] mthreshold;
+
+    private Bitmap titlebmp;
+
     XYMultipleSeriesRenderer multiRenderer;
     XYMultipleSeriesDataset dataset;
 
@@ -65,9 +70,9 @@ public class DoubleLineChart {
 //    }
 
 
-    public DoubleLineChart(String Title,Date choiceDate ,String seriesname1,String seriesname2 , Date[] d1 , Date[] d2, int[] data1, int[] data2,int color1,int color2, Threshold [] thrsehold, Context Context) {
-
-       this.Title=Title;
+    public DoubleLineChart(String Title,Bitmap bmp,Date choiceDate ,String seriesname1,String seriesname2 , Date[] d1 , Date[] d2, int[] data1, int[] data2,int color1,int color2, Threshold [] thrsehold, Context Context) {
+        this.titlebmp=zoomBitmap(bmp,40,40);
+        this.Title=Title;
         this.d1=d1;
         this.d2=d2;
         this.data1 = data1;
@@ -83,7 +88,10 @@ public class DoubleLineChart {
 
         // Creating a combined chart with the chart types specified in types array
         this.gv = ChartFactory.getCombinedXYChartView(this.context, this.dataset, this.multiRenderer, types);
+
+        multiRenderer.setChartTitle(this.titlebmp);
     }
+
 
     public void CustomerXLabel(Date date)
     {
@@ -123,7 +131,16 @@ public class DoubleLineChart {
         multiRenderer.setShowCustomTextGridX(true);
 
     }
-
+    public static Bitmap zoomBitmap(Bitmap bitmap, int width, int height) {
+         int w = bitmap.getWidth();
+          int h = bitmap.getHeight();
+         Matrix matrix = new Matrix();
+          float scaleWidth = ((float) width / w);
+           float scaleHeight = ((float) height / h);
+           matrix.postScale(scaleWidth, scaleHeight);
+          Bitmap newbmp = Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
+          return newbmp;
+        }
     public void InitSeries(Date[] dt1,Date[] dt2 , int[] data1, int[] data2) {
 
 
@@ -207,7 +224,7 @@ public class DoubleLineChart {
 
 
 
-        multiRenderer.setLabelsColor(Color.RED);
+        multiRenderer.setLabelsColor(Color.DKGRAY);
         multiRenderer.setChartTitle(this.Title);
 
 

@@ -1,5 +1,8 @@
 package com.myapplication.charttest1;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -84,9 +87,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void chart() {
-
-
-
             int count = 7;
             Date[] dt1 = new Date[count*3];
             int j=0;
@@ -109,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
             j=0;
             for(int i =0 ;i<7 ;i++) {
 
-                Date gc = new Date(2012,month, i+1, 7, 0);
+                Date gc = new Date(2012,month, i+1,8,10);
                 dt2[j] = gc ;
                 j++;
-                gc = new Date(2012,month, i+1, 12, 0);
+                gc = new Date(2012,month, i+1, 15, 0);
                 dt2[j] =  gc;
                 j++;
 
@@ -134,7 +134,16 @@ public class MainActivity extends AppCompatActivity {
                             new Threshold(1200, 1000, color1),
                              new Threshold(900, 500, color2)
                     };
-            DoubleLineChart chart = new DoubleLineChart("PChart",new Date(2012,9,4), "壓力1", "壓力2", dt1, dt2, data1, data2, color1, color2, threshold, MainActivity.this);
+
+            Resources res = getResources();
+            Bitmap Titlebmp = BitmapFactory.decodeResource(res, R.mipmap.ic_launcher);
+
+
+            //第二個param  是為一週的中心日期  會往前後三天 畫出XLabel
+            DoubleLineChart chart = new DoubleLineChart("PChart",Titlebmp,new Date(2012,9,4), "壓力1", "壓力2", dt1, dt2, data1, data2, color1, color2, threshold, MainActivity.this);
+
+
+
 
             LinearLayout lin = (LinearLayout) findViewById(R.id.l1);
 
